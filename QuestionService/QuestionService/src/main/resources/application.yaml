@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name:
+      QuestionService
+  datasource:
+    url: jdbc:mysql://localhost:3306/question_service_db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 169251
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
