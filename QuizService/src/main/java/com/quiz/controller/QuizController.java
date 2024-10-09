@@ -17,7 +17,7 @@ public class QuizController {
     private QuizService quizService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addNewQuiz(Quiz quiz) {
+    public ResponseEntity<String> addNewQuiz(@RequestBody Quiz quiz) {
         quizService.addQuiz(quiz);
         return new ResponseEntity<>("quiz added successfully", HttpStatus.CREATED);
     }
@@ -34,6 +34,7 @@ public class QuizController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTheQuizById(@PathVariable Long id) {
+        quizService.deleteQuiz(id);
         return new ResponseEntity<>("deleted the quiz with id: "+id, HttpStatus.OK);
     }
 
