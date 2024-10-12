@@ -1,5 +1,6 @@
 package com.quiz.controller;
 
+import com.quiz.dto.Question;
 import com.quiz.entity.Quiz;
 import com.quiz.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,8 @@ public class QuizController {
         return new ResponseEntity<>("deleted the quiz with id: "+id, HttpStatus.OK);
     }
 
+    @GetMapping("/{quizId}/questions")
+    public ResponseEntity<List<Question>> getAllQuestionsByQuizId(@PathVariable Long quizId) {
+        return ResponseEntity.ok(quizService.getAllQuestionByQuizId(quizId));
+    }
 }

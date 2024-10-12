@@ -1,5 +1,6 @@
 package com.quiz.service;
 
+import com.quiz.dto.Question;
 import com.quiz.entity.Quiz;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface QuizService {
     Quiz getQuizById(Long id);
 
     void deleteQuiz(Long id);
+
+    List<Question> getAllQuestionByQuizId(Long quizId);
 }
