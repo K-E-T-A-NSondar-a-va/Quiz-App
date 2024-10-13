@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuizServiceImpl implements QuizService {
@@ -27,7 +28,10 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public List<Quiz> getAllQuizes() {
-        return quizRepository.findAll();
+        return quizRepository.findAll().stream().map(quiz -> {
+            quiz.setQuestions(findAllQuestions(quiz.getId()));
+            return quiz;
+        }).collect(Collectors.toList());
     }
 
     @Override
@@ -42,7 +46,13 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public List<Question> getAllQuestionByQuizId(Long quizId) {
+        return findAllQuestions(quizId);
+    }
+
+    private List<Question> findAllQuestions(Long quizId) {
         Question[] questions = template.getForEntity("http://localhost:8082/question/quiz/"+quizId, Question[].class).getBody();
         return Arrays.stream(questions).toList();
     }
+
+
 }
