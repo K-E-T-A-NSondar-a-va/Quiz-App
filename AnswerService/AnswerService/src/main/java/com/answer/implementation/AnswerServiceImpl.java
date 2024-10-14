@@ -43,4 +43,9 @@ public class AnswerServiceImpl implements AnswerService {
     public List<Answer> getAllAnswerByQuiz(Long quizId) {
         return answerRepository.findAll().stream().filter(answer -> answer.getQuizId().equals(quizId)).toList();
     }
+
+    @Override
+    public Answer getAnswerOfQuestion(Long questionId) {
+        return answerRepository.findByQuestionId(questionId);
+    }
 }

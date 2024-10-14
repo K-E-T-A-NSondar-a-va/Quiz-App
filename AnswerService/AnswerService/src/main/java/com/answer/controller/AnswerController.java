@@ -48,4 +48,9 @@ public class AnswerController {
         return ResponseEntity.ok(answerService.getAllAnswerByQuiz(quizId));
     }
 
+    @GetMapping("/question/{questionId}")
+    public ResponseEntity<Answer> getAnsOfTheQuestion(@PathVariable Long questionId) {
+        return ResponseEntity.ok(answerService.getAnswerOfQuestion(questionId));
+    }
+
 }

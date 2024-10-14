@@ -11,4 +11,5 @@ public interface AnswerService {
     Answer updateAnswer(Answer answer);
     List<Answer> getAllAnswers();
     List<Answer> getAllAnswerByQuiz(Long quizId);
+    Answer getAnswerOfQuestion(Long questionId);
 }
