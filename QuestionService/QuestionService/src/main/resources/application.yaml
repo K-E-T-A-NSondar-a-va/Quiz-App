@@ -16,7 +16,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      
+
 # Config as a eureka client:
 eureka:
   client:
