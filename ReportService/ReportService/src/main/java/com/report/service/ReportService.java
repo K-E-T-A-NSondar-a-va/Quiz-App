@@ -5,6 +5,7 @@ import com.report.dto.QuestionWithAnswer;
 import com.report.dto.Quiz;
 import com.report.dto.QuizData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,13 +16,12 @@ import java.util.List;
 @Service
 public class ReportService {
 
-    private RestTemplate template = new RestTemplate();
-
-    Answer[] answers = template.getForEntity("http://localhost:8083/answer/quiz/102", Answer[].class).getBody();
-
-    Quiz[] quizzes = template.getForEntity("http://localhost:8081/quiz/", Quiz[].class).getBody();
+    @Autowired
+    private RestTemplate template;
 
     public List<QuizData> formatAndForwardQuiz() {
+        Quiz[] quizzes = template.getForEntity("http://localhost:8081/quiz/", Quiz[].class).getBody();
+
         List<QuizData> quizDataList = new ArrayList<>();
 
         Arrays.stream(quizzes).forEach(quiz -> {

@@ -4,7 +4,9 @@ server:
 spring:
   application:
     name:
-      QuestionService
+      QUESTION-SERVICE
+
+  # Database Config:
   datasource:
     url: jdbc:mysql://localhost:3306/question_service_db
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,3 +16,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+      
+# Config as a eureka client:
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

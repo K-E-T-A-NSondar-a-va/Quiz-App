@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: QuizService
+    name: QUIZ-SERVICE
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,3 +13,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,7 +1,13 @@
 spring:
   application:
     name:
-      ReportService
+      REPORT-SERVICE
 
 server:
   port: 8084
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
