@@ -6,25 +6,34 @@ spring:
           uri: http://localhost:8080
           predicates:
             - Path=/quiz/**
-
+          filters:
+            - AuthenticationFilter
 
         - id: QUESTION-SERVICE
           uri: http://localhost:8082
           predicates:
             - Path=/question/**
-
+          filters:
+            - AuthenticationFilter
 
         - id: REPORT-SERVICE
           uri: http://localhost:8084
           predicates:
             - Path=/report/**
 
-
         - id: ANSWER-SERVICE
           uri: http://localhost:8083
           predicates:
             - Path=/answer/**
+          filters:
+            - AuthenticationFilter
 
+        - id: AUTH-SERVICE
+          uri: http://localhost:9090
+          predicates:
+            - Path=/auth/**
+          filters:
+            - AuthenticationFilter
 
   application:
     name: API-GATEWAY

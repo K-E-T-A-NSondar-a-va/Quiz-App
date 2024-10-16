@@ -20,7 +20,7 @@ public class ReportService {
     private RestTemplate template;
 
     public List<QuizData> formatAndForwardQuiz() {
-        Quiz[] quizzes = template.getForEntity("http://localhost:8081/quiz/", Quiz[].class).getBody();
+        Quiz[] quizzes = template.getForEntity("http://localhost:8080/quiz/", Quiz[].class).getBody();
 
         List<QuizData> quizDataList = new ArrayList<>();
 
